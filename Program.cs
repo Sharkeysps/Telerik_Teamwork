@@ -10,7 +10,7 @@ using System.Text;
 class BattleField
 {
     
-
+    //TODO make a static class with the types of explosions and the switch case 
     //5 types of explosions
     static readonly int[,] минаЕдно = {{0,0,0,0,0},
                           {0,1,0,1,0},
@@ -82,6 +82,7 @@ class BattleField
     public static int GrymOtQsnoNebe(int[,] arr, int n, int x, int y)
     {
         int[,] expl;
+        //TODO make a new class for making the type of explosion
         switch (arr[x, y]) // zadava ni koi vid bomba imame
         {
             case 1: expl = минаЕдно; break;
