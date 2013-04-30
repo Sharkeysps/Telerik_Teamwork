@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameEngine.cs" />
+    <Compile Include="GameInput.cs" />
+    <Compile Include="MinesExplosion.cs" />
     <Compile Include="PrintGameField.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="BattleField.cs" />
     <Compile Include="TypesOfExplosionsChoice.cs" />
   </ItemGroup>
   <ItemGroup>
