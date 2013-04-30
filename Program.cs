@@ -10,6 +10,7 @@ using System.Text;
 class BattleField
 {
     
+    // Console.WriteLine("test");
     //TODO make a static class with the types of explosions and the switch case 
     //5 types of explosions
     static readonly int[,] минаЕдно = {{0,0,0,0,0},
