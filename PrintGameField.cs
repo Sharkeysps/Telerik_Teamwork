@@ -13,23 +13,24 @@ static class PrintGameField
         Console.Write(" ");
         for (int i = 0; i < n; i++)
         {
-            
             Console.Write(" {0}", i);
         }
+
         Console.WriteLine();
         Console.Write("  ");
         for (int i = 0; i < n * 2; i++)
         {
             Console.Write("-");
         }
+
         Console.WriteLine();
-        for (int i = 0; i < n; i++)
+        for (int row = 0; row < n; row++)
         {
-            Console.Write("{0}|", i);
-            for (int j = 0; j < n; j++)
+            Console.Write("{0}|", row);
+            for (int col = 0; col < n; col++)
             {
                 char c;
-                switch (arr[i, j])
+                switch (arr[row, col])
                 {
                     case 0:
                         c = '-';
@@ -38,7 +39,7 @@ static class PrintGameField
                         c = 'X';
                         break;
                     default:
-                        c = (char)('0' + arr[i, j]);
+                        c = (char)('0' + arr[row, col]);
                         break;
                 }
                 Console.Write("{0} ", c);
