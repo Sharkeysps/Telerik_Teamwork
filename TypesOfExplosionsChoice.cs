@@ -8,7 +8,7 @@ using System.Text;
 /// </summary>
 static class TypesOfExplosionsChoice
 {
-    static readonly int[,] минаЕдно =
+    static readonly int[,] mineOne =
     {
         { 0, 0, 0, 0, 0 },
         { 0, 1, 0, 1, 0 },
@@ -16,7 +16,7 @@ static class TypesOfExplosionsChoice
         { 0, 1, 0, 1, 0 },
         { 0, 0, 0, 0, 0 }
     };
-    static readonly int[,] минаДве =
+    static readonly int[,] mineTwo =
     {
         { 0, 0, 0, 0, 0 },
         { 0, 1, 1, 1, 0 },
@@ -24,7 +24,7 @@ static class TypesOfExplosionsChoice
         { 0, 1, 1, 1, 0 },
         { 0, 0, 0, 0, 0 }
     };
-    static readonly int[,] минаТри =
+    static readonly int[,] minrThree =
     {
         { 0, 0, 1, 0, 0 },
         { 0, 1, 1, 1, 0 },
@@ -32,7 +32,7 @@ static class TypesOfExplosionsChoice
         { 0, 1, 1, 1, 0 },
         { 0, 0, 1, 0, 0 }
     };
-    static readonly int[,] минаЧетири =
+    static readonly int[,] mineFour =
     {
         { 0, 1, 1, 1, 0 },
         { 1, 1, 1, 1, 1 },
@@ -40,7 +40,7 @@ static class TypesOfExplosionsChoice
         { 1, 1, 1, 1, 1 },
         { 0, 1, 1, 1, 0 }
     };
-    static readonly int[,] минаПет =
+    static readonly int[,] mineFive =
     {
         { 1, 1, 1, 1, 1 },
         { 1, 1, 1, 1, 1 },
@@ -54,15 +54,15 @@ static class TypesOfExplosionsChoice
         switch (arr[x, y]) // zadava ni koi vid bomba imame
         {
             case 1:
-                return минаЕдно;
+                return mineOne;
             case 2:
-                return минаДве; 
+                return mineTwo; 
             case 3:
-                return минаТри; 
+                return minrThree; 
             case 4:
-                return минаЧетири; 
+                return mineFour; 
             default:
-                return минаПет;
+                return mineFive;
         }
     }
 }
