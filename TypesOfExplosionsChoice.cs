@@ -8,7 +8,7 @@ using System.Text;
 /// </summary>
 static class TypesOfExplosionsChoice
 {
-    static readonly int[,] mineOne =
+    static readonly int[,] explosionLevelOne =
     {
         { 0, 0, 0, 0, 0 },
         { 0, 1, 0, 1, 0 },
@@ -16,7 +16,7 @@ static class TypesOfExplosionsChoice
         { 0, 1, 0, 1, 0 },
         { 0, 0, 0, 0, 0 }
     };
-    static readonly int[,] mineTwo =
+    static readonly int[,] explosionLevelTwo =
     {
         { 0, 0, 0, 0, 0 },
         { 0, 1, 1, 1, 0 },
@@ -24,7 +24,7 @@ static class TypesOfExplosionsChoice
         { 0, 1, 1, 1, 0 },
         { 0, 0, 0, 0, 0 }
     };
-    static readonly int[,] minrThree =
+    static readonly int[,] explosionLevelThree =
     {
         { 0, 0, 1, 0, 0 },
         { 0, 1, 1, 1, 0 },
@@ -32,7 +32,7 @@ static class TypesOfExplosionsChoice
         { 0, 1, 1, 1, 0 },
         { 0, 0, 1, 0, 0 }
     };
-    static readonly int[,] mineFour =
+    static readonly int[,] explosionLevelFour =
     {
         { 0, 1, 1, 1, 0 },
         { 1, 1, 1, 1, 1 },
@@ -40,7 +40,7 @@ static class TypesOfExplosionsChoice
         { 1, 1, 1, 1, 1 },
         { 0, 1, 1, 1, 0 }
     };
-    static readonly int[,] mineFive =
+    static readonly int[,] explosionLevelFive =
     {
         { 1, 1, 1, 1, 1 },
         { 1, 1, 1, 1, 1 },
@@ -54,15 +54,15 @@ static class TypesOfExplosionsChoice
         switch (arr[x, y]) // zadava ni koi vid bomba imame
         {
             case 1:
-                return mineOne;
+                return explosionLevelOne;
             case 2:
-                return mineTwo; 
+                return explosionLevelTwo; 
             case 3:
-                return minrThree; 
+                return explosionLevelThree; 
             case 4:
-                return mineFour; 
+                return explosionLevelFour; 
             default:
-                return mineFive;
+                return explosionLevelFive;
         }
     }
 }

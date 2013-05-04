@@ -10,44 +10,48 @@ static class PrintGameField
 {
     public static void PrintField(int[,] arr, int n)
     {
+        StringBuilder buffer = new StringBuilder();
         // Prints first row
-        Console.Write(" ");
+        buffer.Append(" ");
         for (int i = 0; i < n; i++)
         {
-            Console.Write(" {0}", i);
+            buffer.Append(" " + i);
         }
-        Console.WriteLine();
+        buffer.AppendLine();
 
         // Prints second row
-        Console.Write("  ");
+        buffer.Append("  ");
         for (int i = 0; i < n * 2; i++)
         {
-            Console.Write("-");
+            buffer.Append("-");
         }
 
         // Prints the game field.
-        Console.WriteLine();
+        buffer.AppendLine();
         for (int row = 0; row < n; row++)
         {
-            Console.Write("{0}|", row);
+            buffer.Append(row);
+            buffer.Append("|");
             for (int col = 0; col < n; col++)
             {
-                char buffer;
+                char currentCharacter;
                 switch (arr[row, col])
                 {
                     case 0:
-                        buffer = '-';
+                        currentCharacter = '-';
                         break;
                     case -1:
-                        buffer = 'X';
+                        currentCharacter = 'X';
                         break;
                     default:
-                        buffer = (char)('0' + arr[row, col]);
+                        currentCharacter = (char)('0' + arr[row, col]);
                         break;
                 }
-                Console.Write("{0} ", buffer);
+                buffer.Append(currentCharacter);
+                buffer.Append(" ");
             }
-            Console.WriteLine();
+            buffer.AppendLine();
         }
+        Console.Write(buffer.ToString());
     }
 }
