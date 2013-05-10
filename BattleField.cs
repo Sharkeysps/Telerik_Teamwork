@@ -15,6 +15,6 @@ class BattleField
     //test test test
     static void Main(string[] args)
     {
-        GameEngine.InitiateGame();
+        GameEngine.InputFieldSize();
     }
 }

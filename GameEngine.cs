@@ -5,41 +5,64 @@ using System.Text;
 
 static class GameEngine
 {
-    public static void InitiateGame()
+    public static void InputFieldSize()
     {
-        int n = 10;
-        Console.Write("Welcome to \"Battle Field\" game.\nEnter battle field size: n = ");
-        int.TryParse(Console.ReadLine(), out n);
-        while (n < 1 || n > 10)
+        int fieldSize = 10;
+        Console.WriteLine("Welcome to \"Battle Field\" game.");
+        Console.Write("Enter battle field size: ");
+        int.TryParse(Console.ReadLine(), out fieldSize);
+        while (fieldSize < 1 || fieldSize > 10)
         {
-            Console.Write("n is between 1 and 10! Please enter new n = ");
-            int.TryParse(Console.ReadLine(), out n);
+            Console.Write("Field size must be between 1 and 10! Please enter new size: ");
+            int.TryParse(Console.ReadLine(), out fieldSize);
         }
-        int[,] arr = new int[n, n];
-        Random ProizvolniChisla = new Random(); //vhoid i inicializaciq na n i matricata;
-        int mineNumber = ProizvolniChisla.Next(15 * n * n / 100, 30 * n * n / 100 + 1);
+        InitiateGame(fieldSize);
+    }
+
+    private static int RandomGenerator(int startRange, int endRange)
+    {
+        Random randomNumber = new Random(); //vhoid i inicializaciq na n i matricata;
+        int result = randomNumber.Next(startRange, endRange);
+        return result;
+    }
+
+    private static int[,] GameFieldCreation(int fieldSize, int mineNumber)
+    {
+        int[,] gameField = new int[fieldSize, fieldSize];
         for (int i = 0; i < mineNumber; i++) // randomizirane na minite i postavqneto im iz poleto
         {
-            int x = ProizvolniChisla.Next(0, n);
-            int y = ProizvolniChisla.Next(0, n);
-            while (arr[x, y] != 0)
+            int x = RandomGenerator(0, fieldSize);
+            int y = RandomGenerator(0, fieldSize);
+            while (gameField[x, y] != 0)
             {
-                x = ProizvolniChisla.Next(0, n);
-                y = ProizvolniChisla.Next(0, n);
+                x = RandomGenerator(0, fieldSize);
+                y = RandomGenerator(0, fieldSize);
             }
-            arr[x, y] = ProizvolniChisla.Next(1, 6);
+            gameField[x, y] = RandomGenerator(1, 6);
         }
-        PrintGameField.PrintField(arr, n);
+        return gameField;
+    }
 
-        int 爆 = 0;
+    private static void InitiateGame(int fieldSize)
+    {
+        int mineNumber = RandomGenerator(15 * fieldSize * fieldSize / 100, 30 * fieldSize * fieldSize / 100 + 1);
+        int[,] gameField = new int[fieldSize, fieldSize];
+        gameField = GameFieldCreation(fieldSize, mineNumber);
+        PrintGameField.PrintField(gameField, fieldSize);
+        CheckForVictory(mineNumber, gameField, fieldSize);
+
+    }
+    private static void CheckForVictory(int mineNumber, int[,] gameField, int fieldSize)
+    {
+        int totalNumberOfMoves = 0;
         while (mineNumber > 0)
         {
-            int tmp = GameInput.InputVariables(arr, n);
+            int tmp = GameInput.InputVariables(gameField, fieldSize);
             mineNumber -= tmp;
-            PrintGameField.PrintField(arr, n);
+            PrintGameField.PrintField(gameField, fieldSize);
             //Console.WriteLine("Mines Blowed this round: {0}",tmp);
-            爆++;
+            totalNumberOfMoves++;
         }
-        Console.WriteLine("游戏结束。引爆地雷：{0}", 爆);
+        Console.WriteLine("Total number of moves：{0}", totalNumberOfMoves);
     }
 }
