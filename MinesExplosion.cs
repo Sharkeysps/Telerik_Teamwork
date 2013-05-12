@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 /// <summary>
 /// Class for exploding the mines in brutal fashion.Class also checks the type of explosions
 /// </summary>
 static class MinesExplosion
 {
-    public static int CheckForExplosion(int[,] arr, int bombPower, int x, int y)
+    public static int CheckForExplosion(int[,] gameField, int bombPower, int x, int y)
     {
-        int[,] expl;
+        int[,] explosionDamageArea;
         //TODO make a new class for making the type of explosion
-        expl = TypesOfExplosionsChoice.ExplosionChoice(arr, x, y);
+        explosionDamageArea = TypesOfExplosionsChoice.ExplosionChoice(gameField, x, y);
         //gyrmi bombata
         int counter = 0;
-        for (int i = -2; i < 3; i++)
+        for (int row = -2; row < 3; row++)
         {
-            for (int j = -2; j < 3; j++)
+            for (int collumn = -2; collumn < 3; collumn++)
             {
-                if (x + i >= 0 && x + i < bombPower && y + j >= 0 && y + j < bombPower)
+                if (x + row >= 0 && x + row < bombPower && y + collumn >= 0 && y + collumn < bombPower)
                 {
-                    if (expl[i + 2, j + 2] == 1)
+                    if (explosionDamageArea[row + 2, collumn + 2] == 1)
                     {
-                        if (arr[x + i, y + j] > 0)
+                        if (gameField[x + row, y + collumn] > 0)
                             counter++;
-                        arr[x + i, y + j] = -1;
+                        gameField[x + row, y + collumn] = -1;
                     }
                 }
             }
