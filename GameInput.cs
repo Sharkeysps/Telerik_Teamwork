@@ -8,42 +8,73 @@ using System.Text;
 /// </summary>
 static class GameInput
 {
-    public static int InputVariables(int[,] arr, int n)
+    /// <summary>
+    /// ManageUserInput is asking the user to unput coordinates in the int[,] gameField and respondw accordingly.
+    /// </summary>
+    public static int ManageUserInput(int[,] gameField, int n)
     {
-        int x = 0, y = 0;
-        bool cond = true;
-        while (cond) //check input
+        bool isSelectingNextCoordinates = true;
+        int xCoordinate = 0, yCoordinate = 0;  // Reset the coordinates value .
+
+        while (isSelectingNextCoordinates) //Checks if the user input is correct for every single coordinates choosen.
         {
-            Console.Write("Please enter coordinates: ");
-            string s = Console.ReadLine();
-            if (s.Length > 2)
+            PromptUserForInput(); 
+
+            string selectedCoordinates = ReadInput();
+            
+            if (selectedCoordinates.Length > 2)
             {
-                x = s.ElementAt(0) - '0';
-                y = s.ElementAt(2) - '0';
-                if (x < 0 || x > 9 || y < 0 || y > 9 || s.ElementAt(1) != ' ')
-                    Console.WriteLine("Invalid move!");
+                xCoordinate = selectedCoordinates.ElementAt(0) - '0';
+                yCoordinate = selectedCoordinates.ElementAt(2) - '0';
+
+                if (xCoordinate < 0 || xCoordinate > 9 || yCoordinate < 0 || yCoordinate > 9 || !(char.IsWhiteSpace(selectedCoordinates, 1)))
+                {
+                    Console.WriteLine("Outside of BattleField Or no white space between selected coordinates!");
+                }
                 else
                 {
-                    if (s.Length > 3)
+                    if (selectedCoordinates.Length > 3)
                     {
-                        if (s.ElementAt(3) != ' ')
-                            Console.WriteLine("Invalid move!");
+                        if (!(char.IsWhiteSpace(selectedCoordinates, 2)))
+                        {
+                            Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5] and make shure they are inside the BattleField !");
+                        }
                         else
-                            cond = false;
+                        {
+                            isSelectingNextCoordinates = false;
+                        }
                     }
                     else
-                        cond = false;
+                    {
+                        isSelectingNextCoordinates = false;
+                    }
                 }
             }
             else
-                Console.WriteLine("Invalid move!");
-            if (cond == false)
-                if (arr[x, y] <= 0)
+                Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5]");
+
+            if (isSelectingNextCoordinates == false)
+            {
+                if (gameField[xCoordinate, yCoordinate] <= 0)
                 {
-                    cond = true;
-                    Console.WriteLine("Invalid move!");
+                    isSelectingNextCoordinates = true;
+
+                    Console.WriteLine("Empty Field! Choose another coordinates!");
                 }
+            }
         }
-        return MinesExplosion.CheckForExplosion(arr, n, x, y);
+
+        return MinesExplosion.CheckForExplosion(gameField, n, xCoordinate, yCoordinate);
+    }
+  
+    private static string ReadInput()
+    {
+        string selectedCoordinates = Console.ReadLine();
+        return selectedCoordinates;
+    }
+  
+    private static void PromptUserForInput()//Prints on the console a message to the users. It prompts for choise of coordinates on the BattleFied.
+    {
+        Console.Write("Please enter coordinates: "); //TODO: Read from Console- return selectedCoordinates(1) consoleMethod
     }
 }

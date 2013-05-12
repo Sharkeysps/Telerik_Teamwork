@@ -8,7 +8,7 @@ using System.Text;
 /// </summary>
 static class MinesExplosion
 {
-    public static int CheckForExplosion(int[,] arr, int n, int x, int y)
+    public static int CheckForExplosion(int[,] arr, int bombPower, int x, int y)
     {
         int[,] expl;
         //TODO make a new class for making the type of explosion
@@ -19,7 +19,7 @@ static class MinesExplosion
         {
             for (int j = -2; j < 3; j++)
             {
-                if (x + i >= 0 && x + i < n && y + j >= 0 && y + j < n)
+                if (x + i >= 0 && x + i < bombPower && y + j >= 0 && y + j < bombPower)
                 {
                     if (expl[i + 2, j + 2] == 1)
                     {
