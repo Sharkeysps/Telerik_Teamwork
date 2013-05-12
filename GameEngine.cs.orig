@@ -15,14 +15,24 @@ public static class GameEngine
             GameFieldGenerator.GameField.GetLength(0));
 
     }
+<<<<<<< HEAD
 
+    private static void CheckForVictory(int minesNumber, int[,] gameField, int fieldSize)
+=======
+    private static void CheckForVictory(int totalMinesNumber, int[,] gameField, int fieldSize)
+>>>>>>> 67c8579b01792edfecfdaef7035ddffb6da57f44
     {
         int totalNumberOfMoves = 0;
 
         while (totalMinesNumber > 0)
         {
+<<<<<<< HEAD
+            int tmp = GameInput.ManageUserInput(gameField, fieldSize);
+            minesNumber -= tmp;
+=======
             int blownMinesThisRound = GameInput.InputVariables(gameField, fieldSize);
             totalMinesNumber -= blownMinesThisRound;
+>>>>>>> 67c8579b01792edfecfdaef7035ddffb6da57f44
             PrintGameField.PrintField(gameField, fieldSize);
             Console.WriteLine("Mines Blowed this round: {0}",blownMinesThisRound);
             totalNumberOfMoves++;
