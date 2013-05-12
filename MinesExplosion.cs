@@ -13,17 +13,17 @@ static class MinesExplosion
         explosionDamageArea = TypesOfExplosionsChoice.ExplosionChoice(gameField, xCoordinate, yCoordinate);
         //gyrmi bombata
         int counter = 0;
-        for (int row = -2; row < 3; row++)
+        for (int collumn = -2; collumn < 3; collumn++)
         {
-            for (int collumn = -2; collumn < 3; collumn++)
+            for (int row = -2; row < 3; row++)
             {
-                if (xCoordinate + row >= 0 && xCoordinate + row < bombPower && yCoordinate + collumn >= 0 && yCoordinate + collumn < bombPower)
+                if (xCoordinate + collumn >= 0 && xCoordinate + collumn < bombPower && yCoordinate + row >= 0 && yCoordinate + row < bombPower)
                 {
-                    if (explosionDamageArea[row + 2, collumn + 2] == 1)
+                    if (explosionDamageArea[collumn + 2, row + 2] == 1)
                     {
-                        if (gameField[xCoordinate + row, yCoordinate + collumn] > 0)
+                        if (gameField[xCoordinate + collumn, yCoordinate + row] > 0)
                             counter++;
-                        gameField[xCoordinate + row, yCoordinate + collumn] = -1;
+                        gameField[xCoordinate + collumn, yCoordinate + row] = -1;
                     }
                 }
             }
