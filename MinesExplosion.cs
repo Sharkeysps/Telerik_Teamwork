@@ -6,24 +6,24 @@ using System.Linq;
 /// </summary>
 static class MinesExplosion
 {
-    public static int CheckForExplosion(int[,] gameField, int bombPower, int x, int y)
+    public static int CheckForExplosion(int[,] gameField, int bombPower, int xCoordinate, int yCoordinate)
     {
         int[,] explosionDamageArea;
         //TODO make a new class for making the type of explosion
-        explosionDamageArea = TypesOfExplosionsChoice.ExplosionChoice(gameField, x, y);
+        explosionDamageArea = TypesOfExplosionsChoice.ExplosionChoice(gameField, xCoordinate, yCoordinate);
         //gyrmi bombata
         int counter = 0;
         for (int row = -2; row < 3; row++)
         {
             for (int collumn = -2; collumn < 3; collumn++)
             {
-                if (x + row >= 0 && x + row < bombPower && y + collumn >= 0 && y + collumn < bombPower)
+                if (xCoordinate + row >= 0 && xCoordinate + row < bombPower && yCoordinate + collumn >= 0 && yCoordinate + collumn < bombPower)
                 {
                     if (explosionDamageArea[row + 2, collumn + 2] == 1)
                     {
-                        if (gameField[x + row, y + collumn] > 0)
+                        if (gameField[xCoordinate + row, yCoordinate + collumn] > 0)
                             counter++;
-                        gameField[x + row, y + collumn] = -1;
+                        gameField[xCoordinate + row, yCoordinate + collumn] = -1;
                     }
                 }
             }
