@@ -23,7 +23,7 @@ public static class GameFieldGenerator
     {
         get
         {
-            if (minesNumber == null)
+            if (minesNumber==0)
             {
                 throw new NullReferenceException("The mines are not yet created");
             }
