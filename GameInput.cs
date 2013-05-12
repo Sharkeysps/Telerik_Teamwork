@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 /// <summary>
 /// Game input in separate static class-game variables input is here
@@ -9,9 +7,11 @@ using System.Text;
 static class GameInput
 {
     /// <summary>
-    /// ManageUserInput is asking the user to unput coordinates in the int[,] gameField and respondw accordingly.
+    /// ManageUserInput is asking the user to unput coordinates in the int[,] gameField and responds accordingly.
     /// </summary>
-    public static int ManageUserInput(int[,] gameField, int n)
+    /// <param name="gameField">The matrix representing the game field.</param>
+    /// <param name="bombPower">The parameter indentifying the power of the explosion.</param>
+    public static int ManageUserInput(int[,] gameField, int bombPower)
     {
         bool isSelectingNextCoordinates = true;
         int xCoordinate = 0, yCoordinate = 0;  // Reset the coordinates value .
@@ -64,17 +64,23 @@ static class GameInput
             }
         }
 
-        return MinesExplosion.CheckForExplosion(gameField, n, xCoordinate, yCoordinate);
+        return MinesExplosion.CheckForExplosion(gameField, bombPower, xCoordinate, yCoordinate);
     }
-  
+
+    /// <summary>
+    /// ReadInput Method passes the user input  to other methods coordinates.
+    /// </summary>
     private static string ReadInput()
     {
         string selectedCoordinates = Console.ReadLine();
         return selectedCoordinates;
     }
-  
-    private static void PromptUserForInput()//Prints on the console a message to the users. It prompts for choise of coordinates on the BattleFied.
+
+    /// <summary>
+    /// PromptUserForInput Method prompts the user to input coordinates of the BattleFied.
+    /// </summary>
+    private static void PromptUserForInput()
     {
-        Console.Write("Please enter coordinates: "); //TODO: Read from Console- return selectedCoordinates(1) consoleMethod
+        Console.Write("Please enter coordinates: "); 
     }
 }
