@@ -11,23 +11,26 @@ static class MinesExplosion
         int[,] explosionDamageArea;
         //TODO make a new class for making the type of explosion
         explosionDamageArea = TypesOfExplosionsChoice.ExplosionChoice(gameField, xCoordinate, yCoordinate);
-        //gyrmi bombata
-        int counter = 0;
+
+        int destroyedNearBombsCount = 0;
         for (int collumn = -2; collumn < 3; collumn++)
         {
             for (int row = -2; row < 3; row++)
             {
-                if (xCoordinate + collumn >= 0 && xCoordinate + collumn < bombPower && yCoordinate + row >= 0 && yCoordinate + row < bombPower)
-                {
+                bool IsInsideBattleField = (xCoordinate + collumn >= 0 && xCoordinate + collumn < bombPower &&
+                                            yCoordinate + row >= 0 && yCoordinate + row < bombPower);
+
+                if (IsInsideBattleField)
                     if (explosionDamageArea[collumn + 2, row + 2] == 1)
                     {
                         if (gameField[xCoordinate + collumn, yCoordinate + row] > 0)
-                            counter++;
+                            destroyedNearBombsCount++;
+
                         gameField[xCoordinate + collumn, yCoordinate + row] = -1;
                     }
-                }
             }
         }
-        return counter;
+
+        return destroyedNearBombsCount;
     }
 }
