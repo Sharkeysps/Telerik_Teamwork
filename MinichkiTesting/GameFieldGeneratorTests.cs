@@ -62,7 +62,7 @@ namespace MinichkiTesting
                 {
                     Console.SetIn(sr);
                     GameFieldGenerator.InputFieldSize();
-                    Assert.IsTrue(GameFieldGenerator.MinesNumber > 15 && GameFieldGenerator.MinesNumber < 31);
+                    Assert.IsTrue(GameFieldGenerator.MinesNumber >= 15 && GameFieldGenerator.MinesNumber <= 31);
                 }
             }
         }
