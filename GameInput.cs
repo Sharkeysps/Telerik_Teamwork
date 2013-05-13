@@ -10,8 +10,8 @@ static class GameInput
     /// ManageUserInput is asking the user to unput coordinates in the int[,] gameField and responds accordingly.
     /// </summary>
     /// <param name="gameField">The matrix representing the game field.</param>
-    /// <param name="bombPower">The parameter indentifying the power of the explosion.</param>
-    public static int ManageUserInput(int[,] gameField, int bombPower)
+    /// <param name="minePower">The parameter indentifying the power of the explosion.</param>
+    public static int ManageUserInput(int[,] gameField, int minePower)
     {
         bool isSelectingNextCoordinates = true;
         int xCoordinate = 0, yCoordinate = 0;  // Reset the coordinates value .
@@ -64,7 +64,7 @@ static class GameInput
             }
         }
 
-        return MinesExplosion.CheckForExplosion(gameField, bombPower, xCoordinate, yCoordinate);
+        return MinesExplosion.CheckForExplosion(gameField, minePower, xCoordinate, yCoordinate);
     }
 
     /// <summary>
