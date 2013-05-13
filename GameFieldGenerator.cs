@@ -37,15 +37,12 @@ public static class GameFieldGenerator
     public static void InputFieldSize()//User Input
     {
         Console.WriteLine("Welcome to \"Battle Field\" game.");
-        Console.Write("Enter battle field size: ");
-
+        Console.Write("Enter battle field size between 1 and 10: ");
         int fieldSize;
         int.TryParse(Console.ReadLine(), out fieldSize);
         while (fieldSize < 1 || fieldSize > 10)
         {
-            Console.WriteLine("Field size must be between 1 and 10!");
-            Console.Write("Please enter new size: ");
-            int.TryParse(Console.ReadLine(), out fieldSize);
+            InputFieldSize();
         }
 
         GameFieldCreation(fieldSize);
@@ -53,7 +50,7 @@ public static class GameFieldGenerator
 
     private static int RandomGenerator(int startRange, int endRange)
     {
-        Random randomNumber = new Random(); //vhoid i inicializaciq na n i matricata;
+        Random randomNumber = new Random();
         int result = randomNumber.Next(startRange, endRange);
         return result;
     }
