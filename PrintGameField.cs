@@ -5,7 +5,7 @@ using System.Text;
 /// <summary>
 /// Made a static class Printgamefield with static method Printfield from class Battlefield
 /// </summary>
-static class PrintGameField
+public static class PrintGameField
 {
     /// <summary>
     /// Prints the game field.

@@ -4,7 +4,7 @@ using System.Linq;
 /// <summary>
 /// Game input in separate static class-game variables input is here
 /// </summary>
-static class GameInput
+public static class GameInput
 {
     /// <summary>
     /// ManageUserInput is asking the user to unput coordinates in the int[,] gameField and responds accordingly.

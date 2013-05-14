@@ -4,7 +4,7 @@ using System.Linq;
 /// <summary>
 /// Putting the type of explosions and its choice in static class
 /// </summary>
-static class TypesOfExplosionsChoice
+public static class TypesOfExplosionsChoice
 {
     static readonly int[,] explosionLevelOne =
     {
