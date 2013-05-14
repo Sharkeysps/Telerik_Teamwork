@@ -28,7 +28,7 @@ public static class GameFieldGenerator
         Console.Write("Enter battle field size between 1 and 10: ");
         int fieldSize;
         int.TryParse(Console.ReadLine(), out fieldSize);
-        while (fieldSize < 1  || fieldSize > 11)
+        while (fieldSize < 1  || fieldSize > 10)
         {
             Console.Write("Size must be between 1 and 10 \nInput new size:");
             int.TryParse(Console.ReadLine(), out fieldSize);
