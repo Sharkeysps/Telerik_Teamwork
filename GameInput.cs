@@ -10,24 +10,25 @@ static class GameInput
     /// ManageUserInput is asking the user to unput coordinates in the int[,] gameField and responds accordingly.
     /// </summary>
     /// <param name="gameField">The matrix representing the game field.</param>
-    /// <param name="minePower">The parameter indentifying the power of the explosion.</param>
-    public static int ManageUserInput(int[,] gameField, int minePower)
+    /// <param name="mineRange">The parameter indentifying the power of the explosion.</param>
+    public static int ManageUserInput(int[,] gameField, int mineRange)
     {
         bool isSelectingNextCoordinates = true;
         int xCoordinate = 0, yCoordinate = 0;  // Reset the coordinates value .
 
         while (isSelectingNextCoordinates) //Checks if the user input is correct for every single coordinates choosen.
         {
-            PromptUserForInput(); 
+            PromptUserForInput();
 
             string selectedCoordinates = ReadInput();
-            
+
             if (selectedCoordinates.Length > 2)
             {
                 xCoordinate = selectedCoordinates.ElementAt(0) - '0';
                 yCoordinate = selectedCoordinates.ElementAt(2) - '0';
 
-                if (xCoordinate < 0 || xCoordinate > 9 || yCoordinate < 0 || yCoordinate > 9 || !(char.IsWhiteSpace(selectedCoordinates, 1)))
+                bool isOutsideBattleField = (xCoordinate < 0 || xCoordinate > 9 || yCoordinate < 0 || yCoordinate > 9);
+                if (isOutsideBattleField || !(char.IsWhiteSpace(selectedCoordinates, 1)))
                 {
                     Console.WriteLine("Outside of BattleField Or no white space between selected coordinates!");
                 }
@@ -35,14 +36,14 @@ static class GameInput
                 {
                     if (selectedCoordinates.Length > 3)
                     {
-                        if (!(char.IsWhiteSpace(selectedCoordinates, 2)))
+              //          if (!(char.IsWhiteSpace(selectedCoordinates, 2)))
                         {
                             Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5] and make shure they are inside the BattleField !");
                         }
-                        else
-                        {
-                            isSelectingNextCoordinates = false;
-                        }
+              //          else
+               //         {
+             //               isSelectingNextCoordinates = false;
+                //        }
                     }
                     else
                     {
@@ -64,7 +65,7 @@ static class GameInput
             }
         }
 
-        return MinesExplosion.CheckForExplosion(gameField, minePower, xCoordinate, yCoordinate);
+        return MinesExplosion.CheckForExplosion(gameField, mineRange, xCoordinate, yCoordinate);
     }
 
     /// <summary>
@@ -81,6 +82,6 @@ static class GameInput
     /// </summary>
     private static void PromptUserForInput()
     {
-        Console.Write("Please enter coordinates: "); 
+        Console.Write("Please enter coordinates: ");
     }
 }

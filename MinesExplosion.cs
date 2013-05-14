@@ -10,11 +10,11 @@ internal static class MinesExplosion
     /// The method stores the number of the nearby mines in destroyedNearMinesCount
     /// </summary>
     /// <param name="gameField">The game field size</param>
-    /// <param name="minePower">The range of the mine</param>
+    /// <param name="mineRange">The range of the mine</param>
     /// <param name="xCoordinate"></param>
     /// <param name="yCoordinate"></param>
     /// <returns>int destroyedNearMinesCount - the </returns>
-    public static int CheckForExplosion(int[,] gameField, int minePower, int xCoordinate, int yCoordinate)
+    public static int CheckForExplosion(int[,] gameField, int mineRange, int xCoordinate, int yCoordinate)
     {
         int[,] explosionDamageArea;
         //TODO make a new class for making the type of explosion
@@ -26,10 +26,10 @@ internal static class MinesExplosion
         {
             for (int row = -2; row < 3; row++)
             {
-                bool IsInsideBattleField = (xCoordinate + collumn >= 0 && xCoordinate + collumn < minePower &&
-                                            yCoordinate + row >= 0 && yCoordinate + row < minePower);
+                bool isInsideBattleField = (xCoordinate + collumn >= 0 && xCoordinate + collumn < mineRange &&
+                                            yCoordinate + row >= 0 && yCoordinate + row < mineRange);
 
-                if (IsInsideBattleField)
+                if (isInsideBattleField)
                     if (explosionDamageArea[collumn + 2, row + 2] == 1)
                     {
                         if (gameField[xCoordinate + collumn, yCoordinate + row] > 0)
