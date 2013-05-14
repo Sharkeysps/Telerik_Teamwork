@@ -47,9 +47,9 @@ static class TypesOfExplosionsChoice
         { 1, 1, 1, 1, 1 }
     };
 
-    public static int[,] ExplosionChoice(int[,] arr, int x, int y)
+    public static int[,] ExplosionChoice(int[,] matrix, int row, int col)
     {
-        switch (arr[x, y]) // zadava ni koi vid bomba imame
+        switch (matrix[row, col]) // zadava ni koi vid bomba imame
         {
             case 1:
                 return explosionLevelOne;

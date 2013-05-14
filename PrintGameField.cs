@@ -7,12 +7,29 @@ using System.Text;
 /// </summary>
 static class PrintGameField
 {
-    public static void PrintField(int[,] arr, int n)
+    /// <summary>
+    /// Prints the game field.
+    /// </summary>
+    /// <param name="matrix">The matrix.</param>
+    /// <param name="matrixSize">Size of the matrix.</param>
+    public static void PrintField(int[,] matrix, int matrixSize)
+    {
+        string buffer = GenerateField(matrix, matrixSize);
+        Console.Write(buffer);
+    }
+
+    /// <summary>
+    /// Generates the game field.
+    /// </summary>
+    /// <param name="matrix">The matrix.</param>
+    /// <param name="matrixSize">Size of the matrix.</param>
+    /// <returns>The generated field.</returns>
+    private static string GenerateField(int[,] matrix, int matrixSize)
     {
         StringBuilder buffer = new StringBuilder();
         // Prints first row
         buffer.Append(" ");
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < matrixSize; i++)
         {
             buffer.Append(" " + i);
         }
@@ -20,21 +37,21 @@ static class PrintGameField
 
         // Prints second row
         buffer.Append("  ");
-        for (int i = 0; i < n * 2; i++)
+        for (int i = 0; i < matrixSize * 2; i++)
         {
             buffer.Append("-");
         }
 
         // Prints the game field.
         buffer.AppendLine();
-        for (int row = 0; row < n; row++)
+        for (int row = 0; row < matrixSize; row++)
         {
             buffer.Append(row);
             buffer.Append("|");
-            for (int col = 0; col < n; col++)
+            for (int col = 0; col < matrixSize; col++)
             {
                 char currentCharacter;
-                switch (arr[row, col])
+                switch (matrix[row, col])
                 {
                     case 0:
                         currentCharacter = '-';
@@ -43,7 +60,7 @@ static class PrintGameField
                         currentCharacter = 'X';
                         break;
                     default:
-                        currentCharacter = (char)('0' + arr[row, col]);
+                        currentCharacter = (char)('0' + matrix[row, col]);
                         break;
                 }
                 buffer.Append(currentCharacter);
@@ -51,6 +68,6 @@ static class PrintGameField
             }
             buffer.AppendLine();
         }
-        Console.Write(buffer.ToString());
+        return buffer.ToString();
     }
 }
