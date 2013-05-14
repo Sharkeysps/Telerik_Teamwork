@@ -13,7 +13,7 @@ namespace MinichkiTesting
         public void TestIfGameFieldIsEmptyWhenNotCalled()
         {
 
-            Assert.AreEqual(GameFieldGenerator.GameField.Length, 0);
+            Assert.IsTrue(GameFieldGenerator.GameField.Length==0);
         }
 
         [TestMethod]
@@ -80,5 +80,60 @@ namespace MinichkiTesting
                 }
             }
         }
+        [TestMethod]
+        public void TestUserInputWithOutOfRangeParameters()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                using (StringReader sr = new StringReader(string.Format("11{0}2{0}", Environment.NewLine)))
+                {
+                    Console.SetIn(sr);
+                    GameFieldGenerator.InputFieldSize();
+                    string expectedResult = "Welcome to \"Battle Field\" game.\r\nEnter battle field size between 1 and 10: Size must be between 1 and 10 \nInput new size:";
+                    Assert.AreEqual<string>(expectedResult, sw.ToString());
+
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestUserInputWithOutOfStringParameter()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                using (StringReader sr = new StringReader(string.Format("ssssd{0}2{0}", Environment.NewLine)))
+                {
+                    Console.SetIn(sr);
+                    GameFieldGenerator.InputFieldSize();
+                    string expectedResult = "Welcome to \"Battle Field\" game.\r\nEnter battle field size between 1 and 10: Size must be between 1 and 10 \nInput new size:";
+                    Assert.AreEqual<string>(expectedResult, sw.ToString());
+
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestUserInputWithDoubleParameters()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                using (StringReader sr = new StringReader(string.Format("5.5{0}2{0}", Environment.NewLine)))
+                {
+                    Console.SetIn(sr);
+                    GameFieldGenerator.InputFieldSize();
+                    string expectedResult = "Welcome to \"Battle Field\" game.\r\nEnter battle field size between 1 and 10: Size must be between 1 and 10 \nInput new size:";
+                    Assert.AreEqual<string>(expectedResult, sw.ToString());
+
+                }
+            }
+        }
+
+
     }
 }
