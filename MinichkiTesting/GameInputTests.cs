@@ -1,9 +1,15 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// ********************************
+// <copyright file="GameInputTests.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+// ********************************
+
+namespace Mines.Tests
+{
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
-namespace MinichkiTesting
-{
     [TestClass]
     public class GameInputTests
     {

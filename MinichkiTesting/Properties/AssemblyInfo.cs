@@ -1,15 +1,21 @@
-﻿using System.Reflection;
+﻿// ********************************
+// <copyright file="AssemblyInfo.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+// ********************************
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MinichkiTesting")]
+[assembly: AssemblyTitle("Mines.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MinichkiTesting")]
+[assembly: AssemblyProduct("Mines.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

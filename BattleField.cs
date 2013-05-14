@@ -1,10 +1,25 @@
-﻿using System;
-using System.Linq;
+﻿// ********************************
+// <copyright file="BattleField.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+// ********************************
 
-public class BattleField
+namespace Mines
 {
-    static void Main(string[] args)
+    using System;
+    using System.Linq;
+
+    /// <summary>
+    /// Represents a battle field.
+    /// </summary>
+    public class BattleField
     {
-        GameEngine.InitiateGame();
+        /// <summary>
+        /// Mains this instance.
+        /// </summary>
+        private static void Main()
+        {
+            GameEngine.InitiateGame();
+        }
     }
 }

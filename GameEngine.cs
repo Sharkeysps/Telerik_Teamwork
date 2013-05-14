@@ -1,33 +1,51 @@
-﻿using System;
-using System.Linq;
+﻿// ********************************
+// <copyright file="GameEngine.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+// ********************************
 
-public static class GameEngine
+namespace Mines
 {
-    public static void InitiateGame()
+    using System;
+    using System.Linq;
+
+    /// <summary>
+    /// Represents the game engine.
+    /// </summary>
+    public static class GameEngine
     {
-        GameFieldGenerator.InputFieldSize();
-        
-        PrintGameField.PrintField(GameFieldGenerator.GameField,
-            GameFieldGenerator.GameField.GetLength(0));
-
-        CheckForVictory(GameFieldGenerator.MinesNumber,
-            GameFieldGenerator.GameField,
-            GameFieldGenerator.GameField.GetLength(0));
-    }
-
-    private static void CheckForVictory(int totalMinesNumber, int[,] gameField, int fieldSize)
-    {
-        int totalNumberOfMoves = 0;
-
-        while (totalMinesNumber > 0)
+        /// <summary>
+        /// Initiates the game.
+        /// </summary>
+        public static void InitiateGame()
         {
-            int blownMinesThisRound = GameInput.ManageUserInput(gameField, fieldSize);
-            totalMinesNumber -= blownMinesThisRound;
-            PrintGameField.PrintField(gameField, fieldSize);
-            Console.WriteLine("Mines Blowed this round: {0}", blownMinesThisRound);
-            totalNumberOfMoves++;
+            GameBoardGenerator.GetBoardSize();
+
+            PrintGameBoard.PrintField(GameBoardGenerator.GameField, GameBoardGenerator.GameField.GetLength(0));
+
+            CheckForVictory(GameBoardGenerator.MinesNumber, GameBoardGenerator.GameField, GameBoardGenerator.GameField.GetLength(0));
         }
 
-        Console.WriteLine("Congratulations you won the game in {0} moves", totalNumberOfMoves);
+        /// <summary>
+        /// Checks for victory.
+        /// </summary>
+        /// <param name="totalMinesNumber">The total mines number.</param>
+        /// <param name="gameField">The game field.</param>
+        /// <param name="fieldSize">Size of the field.</param>
+        private static void CheckForVictory(int totalMinesNumber, int[,] gameField, int fieldSize)
+        {
+            int totalNumberOfMoves = 0;
+
+            while (totalMinesNumber > 0)
+            {
+                int blownMinesThisRound = GameInput.ManageUserInput(gameField, fieldSize);
+                totalMinesNumber -= blownMinesThisRound;
+                PrintGameBoard.PrintField(gameField, fieldSize);
+                Console.WriteLine("Mines Blowed this round: {0}", blownMinesThisRound);
+                totalNumberOfMoves++;
+            }
+
+            Console.WriteLine("Congratulations you won the game in {0} moves", totalNumberOfMoves);
+        }
     }
 }

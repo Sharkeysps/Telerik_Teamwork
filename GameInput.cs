@@ -1,87 +1,103 @@
-﻿using System;
-using System.Linq;
+﻿// ********************************
+// <copyright file="GameInput.cs" company="Telerik Academy">
+// Copyright (c) 2013 Telerik Academy. All rights reserved.
+// </copyright>
+// ********************************
 
-/// <summary>
-/// Game input in separate static class-game variables input is here
-/// </summary>
-public static class GameInput
+namespace Mines
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
-    /// ManageUserInput is asking the user to unput coordinates in the int[,] gameField and responds accordingly.
+    /// Game input in separate static class-game variables input is here
     /// </summary>
-    /// <param name="gameField">The matrix representing the game field.</param>
-    /// <param name="mineRange">The parameter indentifying the power of the explosion.</param>
-    public static int ManageUserInput(int[,] gameField, int mineRange)
+    public static class GameInput
     {
-        bool isSelectingNextCoordinates = true;
-        int xCoordinate = 0, yCoordinate = 0;  // Reset the coordinates value .
-
-        while (isSelectingNextCoordinates) //Checks if the user input is correct for every single coordinates choosen.
+        /// <summary>
+        /// ManageUserInput is asking the user to input coordinates in the int[,] gameField and responds accordingly.
+        /// </summary>
+        /// <param name="gameField">The matrix representing the game field.</param>
+        /// <param name="mineRange">The parameter identifying the power of the explosion.</param>
+        /// <returns>Explosion state.</returns>
+        public static int ManageUserInput(int[,] gameField, int mineRange)
         {
-            PromptUserForInput();
+            // Reset the coordinates value.
+            bool isSelectingNextCoordinates = true;
+            int row = 0, col = 0;  
 
-            string selectedCoordinates = ReadInput();
-
-            if (selectedCoordinates.Length > 2)
+            // Checks if the user input is correct for every single coordinates choosen.
+            while (isSelectingNextCoordinates) 
             {
-                xCoordinate = selectedCoordinates.ElementAt(0) - '0';
-                yCoordinate = selectedCoordinates.ElementAt(2) - '0';
+                PromptUserForInput();
 
-                bool isOutsideBattleField = (xCoordinate < 0 || xCoordinate > 9 || yCoordinate < 0 || yCoordinate > 9);
-                if (isOutsideBattleField || !(char.IsWhiteSpace(selectedCoordinates, 1)))
+                string selectedCoordinates = ReadInput();
+
+                if (selectedCoordinates.Length > 2)
                 {
-                    Console.WriteLine("Outside of BattleField Or no white space between selected coordinates!");
-                }
-                else
-                {
-                    if (selectedCoordinates.Length > 3)
+                    row = selectedCoordinates.ElementAt(0) - '0';
+                    col = selectedCoordinates.ElementAt(2) - '0';
+
+                    bool isOutsideBattleField = row < 0 || row > 9 || col < 0 || col > 9;
+                    if (isOutsideBattleField || !char.IsWhiteSpace(selectedCoordinates, 1))
                     {
-              //          if (!(char.IsWhiteSpace(selectedCoordinates, 2)))
-                        {
-                            Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5] and make shure they are inside the BattleField !");
-                        }
-              //          else
-               //         {
-             //               isSelectingNextCoordinates = false;
-                //        }
+                        Console.WriteLine("Outside of BattleField Or no white space between selected coordinates!");
                     }
                     else
                     {
-                        isSelectingNextCoordinates = false;
+                        if (selectedCoordinates.Length > 3)
+                        {
+                            //          if (!(char.IsWhiteSpace(selectedCoordinates, 2)))
+                            {
+                                Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5] and make shure they are inside the BattleField !");
+                            }
+
+                            //          else
+                            //         {
+                            //               isSelectingNextCoordinates = false;
+                            //        }
+                        }
+                        else
+                        {
+                            isSelectingNextCoordinates = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5]");
+                }
+
+                if (isSelectingNextCoordinates == false)
+                {
+                    if (gameField[row, col] <= 0)
+                    {
+                        isSelectingNextCoordinates = true;
+
+                        Console.WriteLine("Empty Field! Choose another coordinates!");
                     }
                 }
             }
-            else
-                Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5]");
 
-            if (isSelectingNextCoordinates == false)
-            {
-                if (gameField[xCoordinate, yCoordinate] <= 0)
-                {
-                    isSelectingNextCoordinates = true;
-
-                    Console.WriteLine("Empty Field! Choose another coordinates!");
-                }
-            }
+            return MinesExplosion.CheckForExplosion(gameField, mineRange, row, col);
         }
 
-        return MinesExplosion.CheckForExplosion(gameField, mineRange, xCoordinate, yCoordinate);
-    }
+        /// <summary>
+        /// ReadInput Method passes the user input  to other methods coordinates.
+        /// </summary>
+        /// <returns>The coordinates.</returns>
+        private static string ReadInput()
+        {
+            string selectedCoordinates = Console.ReadLine();
+            return selectedCoordinates;
+        }
 
-    /// <summary>
-    /// ReadInput Method passes the user input  to other methods coordinates.
-    /// </summary>
-    private static string ReadInput()
-    {
-        string selectedCoordinates = Console.ReadLine();
-        return selectedCoordinates;
-    }
-
-    /// <summary>
-    /// PromptUserForInput Method prompts the user to input coordinates of the BattleFied.
-    /// </summary>
-    private static void PromptUserForInput()
-    {
-        Console.Write("Please enter coordinates: ");
+        /// <summary>
+        /// PromptUserForInput Method prompts the user to input coordinates of the BattleField.
+        /// </summary>
+        private static void PromptUserForInput()
+        {
+            Console.Write("Please enter coordinates: ");
+        }
     }
 }

@@ -10,3 +10,6 @@ E:\GitHubLocalRepoLenovo\[КПК]TeamWork\Telerik_Teamwork\obj\x86\Debug\BattleF
 E:\GitHubLocalRepoLenovo\[КПК]TeamWork\Telerik_Teamwork\bin\Debug\BattleField.exe
 E:\GitHubLocalRepoLenovo\[КПК]TeamWork\Telerik_Teamwork\bin\Debug\BattleField.pdb
 E:\GitHubLocalRepoLenovo\[КПК]TeamWork\Telerik_Teamwork\obj\x86\Debug\MInichki.csprojResolveAssemblyReference.cache
+D:\TeamWork\Telerik_Teamwork\bin\Debug\BattleField.exe
+D:\TeamWork\Telerik_Teamwork\bin\Debug\BattleField.pdb
+D:\TeamWork\Telerik_Teamwork\obj\x86\Debug\MInichki.csprojResolveAssemblyReference.cache
