@@ -58,7 +58,7 @@
     <Compile Include="TypesOfExplosionsChoiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mines.csproj">
+    <ProjectReference Include="..\Mines\Mines.csproj">
       <Project>{148dfea2-f686-4839-be3c-ccb486eb3e4b}</Project>
       <Name>Mines</Name>
     </ProjectReference>
