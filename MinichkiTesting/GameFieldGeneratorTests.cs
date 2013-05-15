@@ -15,12 +15,11 @@ namespace Mines.Tests
     {
         //TODO add test for checking input and correct values of fields after inpuy
         [TestMethod]
-        [ExpectedException(typeof(NullReferenceException),`
+        [ExpectedException(typeof(NullReferenceException),
             "The game field is not yet created")]
         public void TestIfGameFieldIsEmptyWhenNotCalled()
         {
             Assert.IsTrue(GameBoardGenerator.GameField.Length == 0);
-            Assert.IsTrue(GameFieldGenerator.GameField.Length==0);
         }
 
         [TestMethod]

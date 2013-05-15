@@ -17,7 +17,7 @@ namespace Mines.Tests
         {
             int[,] testArray = new int[5, 5];
             testArray[2, 2] = 2;
-            int[,] returnedExplosion = TypesOfExplosionsChoice.ExplosionChoice(testArray, 2, 2);
+            int[,] returnedExplosion = TypesOfExplosionsChoice.GetExplosion(testArray, 2, 2);
             int counterMinesTwo = 0;
             for (int i = 0; i < 5; i++)
             {
@@ -37,7 +37,7 @@ namespace Mines.Tests
         {
             int[,] testArray = new int[5, 5];
             testArray[2, 2] = 1;
-            int[,] returnedExplosion = TypesOfExplosionsChoice.ExplosionChoice(testArray, 2, 2);
+            int[,] returnedExplosion = TypesOfExplosionsChoice.GetExplosion(testArray, 2, 2);
             int counterMinesOne = 0;
             for (int i = 0; i < 5; i++)
             {
@@ -57,7 +57,7 @@ namespace Mines.Tests
         {
             int[,] testArray = new int[5, 5];
             testArray[2, 2] = 3;
-            int[,] returnedExplosion = TypesOfExplosionsChoice.ExplosionChoice(testArray, 2, 2);
+            int[,] returnedExplosion = TypesOfExplosionsChoice.GetExplosion(testArray, 2, 2);
             int counterMinesThree = 0;
             for (int i = 0; i < 5; i++)
             {
@@ -77,7 +77,7 @@ namespace Mines.Tests
         {
             int[,] testArray = new int[5, 5];
             testArray[2, 2] = 4;
-            int[,] returnedExplosion = TypesOfExplosionsChoice.ExplosionChoice(testArray, 2, 2);
+            int[,] returnedExplosion = TypesOfExplosionsChoice.GetExplosion(testArray, 2, 2);
             int counterMinesFour = 0;
             for (int i = 0; i < 5; i++)
             {
@@ -97,7 +97,7 @@ namespace Mines.Tests
         {
             int[,] testArray = new int[5, 5];
             testArray[2, 2] = 5;
-            int[,] returnedExplosion = TypesOfExplosionsChoice.ExplosionChoice(testArray, 2, 2);
+            int[,] returnedExplosion = TypesOfExplosionsChoice.GetExplosion(testArray, 2, 2);
             int counterMinesFive = 0;
             for (int i = 0; i < 5; i++)
             {

@@ -8,7 +8,7 @@ namespace Mines.Tests
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
+    using System.IO;
 
     [TestClass]
     public class GameInputTests
