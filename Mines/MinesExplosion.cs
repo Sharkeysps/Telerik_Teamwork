@@ -12,7 +12,7 @@ namespace Mines
     /// <summary>
     /// Class for exploding the mines in brutal fashion.Class also checks the type of explosions
     /// </summary>
-    internal static class MinesExplosion
+    public static class MinesExplosion
     {
         /// <summary>
         /// The method stores the number of the nearby mines in destroyedNearMinesCount
