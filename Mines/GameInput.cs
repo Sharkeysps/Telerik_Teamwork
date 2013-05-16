@@ -25,6 +25,7 @@ namespace Mines
         public static void ManageUserInput(int[,] gameField)
         {
             // Reset the coordinates value.
+            int fieldSize = gameField.GetLength(0);
             bool isSelectingNextCoordinates = true;
             RowCoordinate = 0; 
             ColCoordinate= 0;  
@@ -41,7 +42,7 @@ namespace Mines
                     RowCoordinate = selectedCoordinates.ElementAt(0) - '0';
                     ColCoordinate = selectedCoordinates.ElementAt(2) - '0';
 
-                    bool isOutsideBattleField =( RowCoordinate < 0 || RowCoordinate > 9 || ColCoordinate < 0 || ColCoordinate > 9);
+                    bool isOutsideBattleField =( RowCoordinate < 0 || RowCoordinate <= fieldSize || ColCoordinate < 0 || ColCoordinate <= 9);
                     if (isOutsideBattleField)
                     {
                         Console.WriteLine("Outside of Field Range");

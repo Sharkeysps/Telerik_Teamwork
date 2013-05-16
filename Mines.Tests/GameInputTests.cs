@@ -53,7 +53,7 @@ namespace Mines.Tests
         [TestMethod]
         public void TestInCorrectUserInputOutsideOfField()
         {
-            //Problem-doesnt get to the console output that coordinates is outside field-all yours
+            //Problem null refence exception where there should not be one
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
