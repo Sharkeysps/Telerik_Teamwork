@@ -18,11 +18,12 @@ namespace Mines
         /// ManageUserInput is asking the user to input coordinates in the int[,] gameField and responds accordingly.
         /// </summary>
         /// <param name="gameField">The matrix representing the game field.</param>
-        /// <param name="mineRange">The parameter identifying the power of the explosion.</param>
+        /// <param name="gameFieldSize">The parameter identifying the power of the explosion.</param>
         /// <returns>Explosion state.</returns>
-        public static int ManageUserInput(int[,] gameField, int mineRange)
+        public static int ManageUserInput(int[,] gameField)
         {
             // Reset the coordinates value.
+            int gameFieldSize = gameField.GetLength(0);
             bool isSelectingNextCoordinates = true;
             int row = 0, col = 0;  
 
@@ -79,7 +80,7 @@ namespace Mines
                 }
             }
 
-            return MinesExplosion.CheckForExplosion(gameField, mineRange, row, col);
+            return MinesExplosion.CheckForExplosion(gameField, row, col);
         }
 
         /// <summary>

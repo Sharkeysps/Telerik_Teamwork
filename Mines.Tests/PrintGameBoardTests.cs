@@ -18,7 +18,7 @@ namespace Mines.Tests
                 {
                     Console.SetIn(sr);
                     GameBoardGenerator.GetBoardSize();
-                    PrintGameBoard.PrintField(GameBoardGenerator.GameField, 6);
+                    PrintGameBoard.PrintField(GameBoardGenerator.GameField);
                     string result = sw.ToString();
                     Assert.IsTrue(result.Length == 202);//size of printed array without the string length of the GetBoardSize console writings
                 }
@@ -36,7 +36,7 @@ namespace Mines.Tests
                 {
                     Console.SetIn(sr);
                     GameBoardGenerator.GetBoardSize();
-                    PrintGameBoard.PrintField(GameBoardGenerator.GameField, 1);
+                    PrintGameBoard.PrintField(GameBoardGenerator.GameField);
                     string result = sw.ToString();
                     Assert.IsTrue(result.Length ==92);
                 }

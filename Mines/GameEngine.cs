@@ -21,7 +21,7 @@ namespace Mines
         {
             GameBoardGenerator.GetBoardSize();
 
-            PrintGameBoard.PrintField(GameBoardGenerator.GameField, GameBoardGenerator.GameField.GetLength(0));
+            PrintGameBoard.PrintField(GameBoardGenerator.GameField);
 
             CheckForVictory(GameBoardGenerator.MinesNumber, GameBoardGenerator.GameField, GameBoardGenerator.GameField.GetLength(0));
         }
@@ -38,9 +38,9 @@ namespace Mines
 
             while (totalMinesNumber > 0)
             {
-                int blownMinesThisRound = GameInput.ManageUserInput(gameField, fieldSize);
+                int blownMinesThisRound = GameInput.ManageUserInput(gameField);
                 totalMinesNumber -= blownMinesThisRound;
-                PrintGameBoard.PrintField(gameField, fieldSize);
+                PrintGameBoard.PrintField(gameField);
                 Console.WriteLine("Mines Blowed this round: {0}", blownMinesThisRound);
                 totalNumberOfMoves++;
             }

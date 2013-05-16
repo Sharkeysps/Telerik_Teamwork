@@ -18,12 +18,13 @@ namespace Mines
         /// The method stores the number of the nearby mines in destroyedNearMinesCount
         /// </summary>
         /// <param name="gameField">The game field size</param>
-        /// <param name="mineRange">The range of the mine</param>
+        /// <param name="gameFieldSize">The range of the mine</param>
         /// <param name="xCoordinate">The x-coordinate.</param>
         /// <param name="yCoordinate">The y-coordinate.</param>
         /// <returns>int destroyedNearMinesCount - the </returns>
-        public static int CheckForExplosion(int[,] gameField, int mineRange, int xCoordinate, int yCoordinate)
+        public static int CheckForExplosion(int[,] gameField, int xCoordinate, int yCoordinate)
         {
+            int gameFieldSize = gameField.GetLength(0);
             int[,] explosionDamageArea;
 
             // TODO make a new class for making the type of explosion
@@ -35,8 +36,8 @@ namespace Mines
             {
                 for (int row = -2; row < 3; row++)
                 {
-                    bool isInsideBattleField = xCoordinate + collumn >= 0 && xCoordinate + collumn < mineRange &&
-                                               yCoordinate + row >= 0 && yCoordinate + row < mineRange;
+                    bool isInsideBattleField = xCoordinate + collumn >= 0 && xCoordinate + collumn < gameFieldSize &&
+                                               yCoordinate + row >= 0 && yCoordinate + row < gameFieldSize;
 
                     if (isInsideBattleField)
                     {

@@ -20,9 +20,9 @@ namespace Mines
         /// </summary>
         /// <param name="matrix">The matrix.</param>
         /// <param name="matrixSize">Size of the matrix.</param>
-        public static void PrintField(int[,] matrix, int matrixSize)
+        public static void PrintField(int[,] matrix)
         {
-            string buffer = GenerateField(matrix, matrixSize);
+            string buffer = GenerateField(matrix, matrix.GetLength(0));
             Console.Write(buffer);
         }
 
