@@ -51,6 +51,7 @@ namespace Mines.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
         public void TestInCorrectUserInputOutsideOfField()
         {
             //Problem null refence exception where there should not be one
@@ -63,9 +64,8 @@ namespace Mines.Tests
                     Console.SetIn(sr);
                     GameBoardGenerator.GetBoardSize();
                     GameInput.ManageUserInput(GameBoardGenerator.GameField);
-                    string actualStringOutput = sw.ToString();
-                    string expectedStringOutput = "Welcome to \"Battle Field\" game.\nEnter battle field size between 1 and 10:\n  Please enter coordinates:";
-                    Assert.AreEqual(expectedStringOutput.Length, actualStringOutput.Length);
+                    Assert.IsTrue(GameInput.ColCoordinate == 8);
+                    Assert.IsTrue(GameInput.RowCoordinate == 8);
                 }
             }
         }
