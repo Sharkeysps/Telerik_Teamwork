@@ -13,27 +13,61 @@ namespace Mines.Tests
     [TestClass]
     public class GameInputTests
     {
-        //[TestMethod]
-        //public void TestCorrectGameInput()
-        //{
-        //    using (StringWriter sw = new StringWriter())
-        //    {
-        //        Console.SetOut(sw);
+        [TestMethod]
+        public void TestUserInputCorrectCoordinates()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
 
-        //        using (StringReader sr = new StringReader(string.Format("ssss{0}", Environment.NewLine)))
-        //        {
-                    
-        //            PrivateType privateType = new PrivateType(typeof(GameInput));
-        //            int[,] testArr = new int[5, 5];
-        //            testArr[2, 2] = 2;
-        //            Console.SetIn(sr);
-        //            int input = (int)privateType.InvokeStatic("ManageUserInput", testArr, 5);
-        //            Assert.IsTrue(input >= 1);
-                    
-             
-                    
-        //        }
-        //    }
-        //}
+                using (StringReader sr = new StringReader(string.Format("10{0}5 5{0}", Environment.NewLine)))
+                {
+                    Console.SetIn(sr);
+                    GameBoardGenerator.GetBoardSize();
+                    GameInput.ManageUserInput(GameBoardGenerator.GameField);
+                    Assert.IsTrue(GameInput.ColCoordinate==5);
+                    Assert.IsTrue(GameInput.RowCoordinate == 5);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestCorrectUserInputPromt()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                using (StringReader sr = new StringReader(string.Format("10{0}5 5{0}", Environment.NewLine)))
+                {
+                    Console.SetIn(sr);
+                    GameBoardGenerator.GetBoardSize();
+                    GameInput.ManageUserInput(GameBoardGenerator.GameField);
+                    string actualStringOutput = sw.ToString();
+                    string expectedStringOutput = "Welcome to \"Battle Field\" game.\nEnter battle field size between 1 and 10:\n  Please enter coordinates:";
+                    Assert.AreEqual(expectedStringOutput.Length,actualStringOutput.Length);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestInCorrectUserInputOutsideOfField()
+        {
+            //Problem-doesnt get to the console output that coordinates is outside field-all yours
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                using (StringReader sr = new StringReader(string.Format("5{0}8 8{0}", Environment.NewLine)))
+                {
+                    Console.SetIn(sr);
+                    GameBoardGenerator.GetBoardSize();
+                    GameInput.ManageUserInput(GameBoardGenerator.GameField);
+                    string actualStringOutput = sw.ToString();
+                    string expectedStringOutput = "Welcome to \"Battle Field\" game.\nEnter battle field size between 1 and 10:\n  Please enter coordinates:";
+                    Assert.AreEqual(expectedStringOutput.Length, actualStringOutput.Length);
+                }
+            }
+        }
     }
 }

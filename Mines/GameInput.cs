@@ -18,14 +18,16 @@ namespace Mines
         /// ManageUserInput is asking the user to input coordinates in the int[,] gameField and responds accordingly.
         /// </summary>
         /// <param name="gameField">The matrix representing the game field.</param>
-        /// <param name="gameFieldSize">The parameter identifying the power of the explosion.</param>
         /// <returns>Explosion state.</returns>
-        public static int ManageUserInput(int[,] gameField)
+        public static int RowCoordinate { private set; get; }
+        public static int ColCoordinate { private set; get; }
+
+        public static void ManageUserInput(int[,] gameField)
         {
             // Reset the coordinates value.
-            int gameFieldSize = gameField.GetLength(0);
             bool isSelectingNextCoordinates = true;
-            int row = 0, col = 0;  
+            RowCoordinate = 0; 
+            ColCoordinate= 0;  
 
             // Checks if the user input is correct for every single coordinates choosen.
             while (isSelectingNextCoordinates) 
@@ -34,34 +36,19 @@ namespace Mines
 
                 string selectedCoordinates = ReadInput();
 
-                if (selectedCoordinates.Length > 2)
+                if (selectedCoordinates.Length == 3 && char.IsWhiteSpace(selectedCoordinates, 1))
                 {
-                    row = selectedCoordinates.ElementAt(0) - '0';
-                    col = selectedCoordinates.ElementAt(2) - '0';
+                    RowCoordinate = selectedCoordinates.ElementAt(0) - '0';
+                    ColCoordinate = selectedCoordinates.ElementAt(2) - '0';
 
-                    bool isOutsideBattleField = row < 0 || row > 9 || col < 0 || col > 9;
-                    if (isOutsideBattleField || !char.IsWhiteSpace(selectedCoordinates, 1))
+                    bool isOutsideBattleField =( RowCoordinate < 0 || RowCoordinate > 9 || ColCoordinate < 0 || ColCoordinate > 9);
+                    if (isOutsideBattleField)
                     {
-                        Console.WriteLine("Outside of BattleField Or no white space between selected coordinates!");
+                        Console.WriteLine("Outside of Field Range");
                     }
                     else
                     {
-                        if (selectedCoordinates.Length > 3)
-                        {
-                            //          if (!(char.IsWhiteSpace(selectedCoordinates, 2)))
-                            {
-                                Console.WriteLine("Choose x and y coordinates, seperated by white space in correct format [Example:2 5] and make shure they are inside the BattleField !");
-                            }
-
-                            //          else
-                            //         {
-                            //               isSelectingNextCoordinates = false;
-                            //        }
-                        }
-                        else
-                        {
-                            isSelectingNextCoordinates = false;
-                        }
+                      isSelectingNextCoordinates = false;
                     }
                 }
                 else
@@ -71,7 +58,7 @@ namespace Mines
 
                 if (isSelectingNextCoordinates == false)
                 {
-                    if (gameField[row, col] <= 0)
+                    if (gameField[RowCoordinate, ColCoordinate] <= 0)
                     {
                         isSelectingNextCoordinates = true;
 
@@ -79,8 +66,6 @@ namespace Mines
                     }
                 }
             }
-
-            return MinesExplosion.CheckForExplosion(gameField, row, col);
         }
 
         /// <summary>

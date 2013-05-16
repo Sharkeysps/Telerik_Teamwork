@@ -38,7 +38,8 @@ namespace Mines
 
             while (totalMinesNumber > 0)
             {
-                int blownMinesThisRound = GameInput.ManageUserInput(gameField);
+                GameInput.ManageUserInput(gameField);
+                int blownMinesThisRound = MinesExplosion.CheckForExplosion(gameField,GameInput.RowCoordinate, GameInput.ColCoordinate);
                 totalMinesNumber -= blownMinesThisRound;
                 PrintGameBoard.PrintField(gameField);
                 Console.WriteLine("Mines Blowed this round: {0}", blownMinesThisRound);
