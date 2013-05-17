@@ -42,7 +42,7 @@ namespace Mines.Tests
                     Console.SetIn(sr);
                     GameBoardGenerator.GetBoardSize();
                     int result = MinesExplosion.CheckForExplosion(GameBoardGenerator.GameField, 5,5);
-                    Assert.IsTrue(result > 2);
+                    Assert.IsTrue(result >= 2);
                 }
             }
         }

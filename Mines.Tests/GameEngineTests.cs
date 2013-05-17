@@ -12,9 +12,6 @@ namespace Mines.Tests
     [TestClass]
     public class GameEngineTests
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+        
     }
 }

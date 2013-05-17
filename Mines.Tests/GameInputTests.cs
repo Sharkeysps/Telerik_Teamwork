@@ -21,7 +21,7 @@ namespace Mines.Tests
             {
                 Console.SetOut(sw);
 
-                using (StringReader sr = new StringReader(string.Format("8{0}9 9{0}4 4{0}", Environment.NewLine)))
+                using (StringReader sr = new StringReader(string.Format("8{0}9 9{0}3 3{0}", Environment.NewLine)))
                 {
                     Console.SetIn(sr);
                     GameBoardGenerator.GetBoardSize();
