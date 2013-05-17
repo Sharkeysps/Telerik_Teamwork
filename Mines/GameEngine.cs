@@ -23,7 +23,7 @@ namespace Mines
 
             PrintGameBoard.PrintField(GameBoardGenerator.GameField);
 
-            CheckForVictory(GameBoardGenerator.MinesNumber, GameBoardGenerator.GameField, GameBoardGenerator.GameField.GetLength(0));
+            CheckForVictory(GameBoardGenerator.MinesNumber, GameBoardGenerator.GameField);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Mines
         /// <param name="totalMinesNumber">The total mines number.</param>
         /// <param name="gameField">The game field.</param>
         /// <param name="fieldSize">Size of the field.</param>
-        private static void CheckForVictory(int totalMinesNumber, int[,] gameField, int fieldSize)
+        private static void CheckForVictory(int totalMinesNumber, int[,] gameField)
         {
             int totalNumberOfMoves = 0;
 

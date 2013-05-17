@@ -17,7 +17,7 @@ namespace Mines
         /// <summary>
         /// Represents explosion level one.
         /// </summary>
-        private static readonly int[,] ExplosionLevelOne =
+        private static readonly int[,] explosionLevelOne =
         {
             { 0, 0, 0, 0, 0 },
             { 0, 1, 0, 1, 0 },
@@ -29,7 +29,7 @@ namespace Mines
         /// <summary>
         /// Represents explosion level two.
         /// </summary>
-        private static readonly int[,] ExplosionLevelTwo =
+        private static readonly int[,] explosionLevelTwo =
         {
             { 0, 0, 0, 0, 0 },
             { 0, 1, 1, 1, 0 },
@@ -41,7 +41,7 @@ namespace Mines
         /// <summary>
         /// Represents explosion level three.
         /// </summary>
-        private static readonly int[,] ExplosionLevelThree =
+        private static readonly int[,] explosionLevelThree =
         {
             { 0, 0, 1, 0, 0 },
             { 0, 1, 1, 1, 0 },
@@ -53,7 +53,7 @@ namespace Mines
         /// <summary>
         /// Represents explosion level four.
         /// </summary>
-        private static readonly int[,] ExplosionLevelFour =
+        private static readonly int[,] explosionLevelFour =
         {
             { 0, 1, 1, 1, 0 },
             { 1, 1, 1, 1, 1 },
@@ -65,7 +65,7 @@ namespace Mines
         /// <summary>
         /// Represents explosion level five.
         /// </summary>
-        private static readonly int[,] ExplosionLevelFive =
+        private static readonly int[,] explosionLevelFive =
         {
             { 1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1 },
@@ -87,15 +87,15 @@ namespace Mines
             switch (matrix[row, col]) 
             {
                 case 1:
-                    return ExplosionLevelOne;
+                    return explosionLevelOne;
                 case 2:
-                    return ExplosionLevelTwo;
+                    return explosionLevelTwo;
                 case 3:
-                    return ExplosionLevelThree;
+                    return explosionLevelThree;
                 case 4:
-                    return ExplosionLevelFour;
+                    return explosionLevelFour;
                 default:
-                    return ExplosionLevelFive;
+                    return explosionLevelFive;
             }
         }
     }
